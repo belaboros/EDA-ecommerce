@@ -1,5 +1,4 @@
-# MSfFP - Miscroservice Skeleton for Fast Prototyping
-
+# EDA ecommerce
 
 ## About
 * hypothetical e-Commerce system with event-driven ProductMgmt, OrderMgmt, ... microservices

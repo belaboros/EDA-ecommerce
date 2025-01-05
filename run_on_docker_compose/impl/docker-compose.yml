@@ -16,7 +16,7 @@ services:
     # Mount the ./dataset directory from the host machine
     # to the /docker-entrypoint-initdb.d directory inside the Docker container.
     volumes:
-      - ../product-mgmt/init/initDB:/docker-entrypoint-initdb.d
+      - ../../product-mgmt/init/initDB:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 1s
@@ -32,7 +32,7 @@ services:
     image: alpine/curl:latest
     hostname: productCDC
     volumes:
-      - ../product-mgmt/init/initCDC:/initCDC:ro
+      - ../../product-mgmt/init/initCDC:/initCDC:ro
     command: ["sh", "-c", "/initCDC/00_deployDebeziumCDC.sh"]
     depends_on:
       connect:
@@ -51,7 +51,7 @@ services:
     # Mount the ./dataset directory from the host machine
     # to the /docker-entrypoint-initdb.d directory inside the Docker container.
     volumes:
-      - ../order-mgmt/init/initDB:/docker-entrypoint-initdb.d    
+      - ../../order-mgmt/init/initDB:/docker-entrypoint-initdb.d    
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 1s
@@ -67,7 +67,7 @@ services:
     image: alpine/curl:latest
     hostname: orderCDC
     volumes:
-      - ../order-mgmt/init/initCDC:/initCDC:ro
+      - ../../order-mgmt/init/initCDC:/initCDC:ro
     command: ["sh", "-c", "/initCDC/00_deployDebeziumCDC.sh"]
     depends_on:
       connect:

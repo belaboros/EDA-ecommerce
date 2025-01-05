@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: MSfFP - eCommerce - ProductMgmt
+    name: EDA - eCommerce - ProductMgmt
     description: Product microservice - SpringBoot, JPA, Postgres, OUTBOX, Debezium, domain events published into Kafka topic.
     version: 0.1
   datasource:

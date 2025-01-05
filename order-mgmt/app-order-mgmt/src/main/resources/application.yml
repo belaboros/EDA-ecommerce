@@ -5,7 +5,7 @@ server:
   
 spring:
   application:
-    name: MSfFP - eCommerce - OrderMgmt
+    name: EDA - eCommerce - OrderMgmt
     description: Order microservice - SpringBoot, JPA, Postgres, OUTBOX, Debezium, domain events consumed/published from/to Kafka topics.
     version: 0.1
   datasource:
