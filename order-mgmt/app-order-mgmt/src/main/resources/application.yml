@@ -1,0 +1,69 @@
+# debug: true
+
+server:
+  port: 8081
+  
+spring:
+  application:
+    name: MSfFP - eCommerce - OrderMgmt
+    description: Order microservice - SpringBoot, JPA, Postgres, OUTBOX, Debezium, domain events consumed/published from/to Kafka topics.
+    version: 0.1
+  datasource:
+    url: jdbc:postgresql://localhost:5434/postgres
+    username: postgres
+    password: password
+  jpa:
+    # show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        globally_quoted_identifiers: true
+    hibernate:
+      # create and drop table, good for testing, production set to none or comment it
+      ddl-auto: create
+  jackson:
+    # Date format string or a fully-qualified date format class name. For instance, 'yyyy-MM-dd HH:mm:ss'
+    date-format: "yyyy-MM-dd HH:mm:ss.SSS"
+  kafka:
+    bootstrap-servers: localhost:9092
+    listener:
+      type: batch
+      ack-mode: batch
+      concurrency: 1
+    consumer:
+      group-id: ${spring.application.name}
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+      max-poll-records: 500
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+management:
+  endpoint:
+    health:
+      probes:
+          enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+
+springdoc:
+  swagger-ui:
+    tagsSorter: alpha
+    operations-sorter: alpha
+    
+info:
+  application:
+    name: ${spring.application.name}
+    description: ${spring.application.description}
+    version: '@project.version@'
+

@@ -1,0 +1,60 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: MSfFP - eCommerce - ProductMgmt
+    description: Product microservice - SpringBoot, JPA, Postgres, OUTBOX, Debezium, domain events published into Kafka topic.
+    version: 0.1
+  datasource:
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+    password: password
+  jpa:
+    # show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        globally_quoted_identifiers: true
+    hibernate:
+      # create tables at start up (only for testing/development)
+      # use "none" or comment it out production
+      ddl-auto: create
+  jackson:
+    # Date format string or a fully-qualified date format class name. For instance, 'yyyy-MM-dd HH:mm:ss'
+    date-format: "yyyy-MM-dd HH:mm:ss.SSS"
+
+management:
+  endpoint:
+    health:
+      probes:
+          enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+
+info:
+  application:
+    name: ${spring.application.name}
+    description: ${spring.application.description}
+    version: '@project.version@'
+
+springdoc:
+  swagger-ui:
+    tagsSorter: alpha
+    operations-sorter: alpha
+
+# app custom property, if true, insert data for testing
+app:
+  db:
+    init:
+      enabled: true
