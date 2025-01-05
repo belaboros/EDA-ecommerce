@@ -5,7 +5,7 @@ Simple ProductMgmt microservice to create/update products and publish/produce do
 
 ## Key features:
 * create/update products via REST API
-* SwaggerUI to access REST API via browser at http://localhost:8080/swagger-ui.html
+* SwaggerUI to access REST API via browser at http://localhost:8090/swagger-ui.html
 * store products in a relational database
 * protect against concurrent modifications via VERSION field pattern
 * publich domain event (business event) messages about product changes for consumers

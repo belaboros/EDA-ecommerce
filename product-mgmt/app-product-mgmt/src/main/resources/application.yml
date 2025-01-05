@@ -1,9 +1,14 @@
+# See also
+#   - https://docs.spring.io/spring-boot/how-to/properties-and-configuration.html
+
+
 server:
-  port: 8080
+  port: 8090
 
 spring:
   application:
     name: EDA - eCommerce - ProductMgmt
+    # NOTE: spring.application.description is needed for Swagger UI
     description: Product microservice - SpringBoot, JPA, Postgres, OUTBOX, Debezium, domain events published into Kafka topic.
     version: 0.1
   datasource:
@@ -15,7 +20,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        globally_quoted_identifiers: true
+        '[globally_quoted_identifiers]': true
     hibernate:
       # create tables at start up (only for testing/development)
       # use "none" or comment it out production
@@ -53,7 +58,7 @@ springdoc:
     tagsSorter: alpha
     operations-sorter: alpha
 
-# app custom property, if true, insert data for testing
+# enable generating test data on startup
 app:
   db:
     init:

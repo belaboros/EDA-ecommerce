@@ -10,7 +10,18 @@ plugins {
 	application
 	id("org.springframework.boot") version "3.4.1"
 	id("io.spring.dependency-management") version "1.1.6"
+	//id("com.bmuschko.docker-spring-boot-application") version "9.4.0"
 }
+//import com.bmuschko.gradle.docker.tasks.image.Dockerfile
+//import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+
+/*
+ * Gradle & Docker & Spring:
+ * 	- https://bmuschko.github.io/gradle-docker-plugin/current/user-guide/#spring_boot_application_plugin
+ * 	- https://plugins.gradle.org/plugin/com.bmuschko.docker-spring-boot-application
+ *  - https://hub.docker.com/_/openjdk/tags?name=23-jdk-slim
+ */
+
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -60,3 +71,20 @@ tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+
+// java {
+//     // https://docs.gradle.org/current/javadoc/org/gradle/api/JavaVersion.html 
+//     sourceCompatibility = JavaVersion.VERSION_23
+//     targetCompatibility = JavaVersion.VERSION_23
+// }
+//
+// docker {
+//     springBootApplication {
+//         baseImage.set("openjdk:23-jdk-slim")
+//         ports.set(listOf(8090))
+//         images.set(setOf("EDA-ecommerce-product-mgmt:0.1", "EDA-ecommerce-product-mgmt:latest"))
+//         //jvmArgs.set(listOf("-Dspring.profiles.active=production", "-Xmx1024m"))
+//         jvmArgs.set(listOf("-Xmx1024m"))
+//     }
+// }

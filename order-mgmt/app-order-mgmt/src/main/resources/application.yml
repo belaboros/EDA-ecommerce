@@ -1,11 +1,16 @@
+# See also
+#   - https://docs.spring.io/spring-boot/how-to/properties-and-configuration.html
+
+
 # debug: true
 
 server:
-  port: 8081
+  port: 8091
   
 spring:
   application:
     name: EDA - eCommerce - OrderMgmt
+    # NOTE: spring.application.description is needed for Swagger UI
     description: Order microservice - SpringBoot, JPA, Postgres, OUTBOX, Debezium, domain events consumed/published from/to Kafka topics.
     version: 0.1
   datasource:
@@ -17,7 +22,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        globally_quoted_identifiers: true
+        '[globally_quoted_identifiers]': true
     hibernate:
       # create and drop table, good for testing, production set to none or comment it
       ddl-auto: create

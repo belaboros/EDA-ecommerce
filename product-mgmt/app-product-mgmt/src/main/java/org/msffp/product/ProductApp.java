@@ -1,9 +1,12 @@
 package org.msffp.product;
 
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.json.JSONObject;
+import org.msffp.product.model.Product;
+import org.msffp.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,8 +17,6 @@ import org.springframework.context.annotation.Bean;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.msffp.product.model.Product;
-import org.msffp.product.service.ProductService;
 
 import lombok.extern.java.Log;
 
@@ -62,5 +63,5 @@ public class ProductApp {
 
 			productService.saveAll(randomOrders);
         };
-	}
+	}	
 }

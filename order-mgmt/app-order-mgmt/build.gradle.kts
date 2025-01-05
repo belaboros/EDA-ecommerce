@@ -54,7 +54,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "org.msffp.product.OrderApp"
+    mainClass = "org.msffp.order.OrderApp"
 }
 
 tasks.named<Test>("test") {
